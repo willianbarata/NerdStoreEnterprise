@@ -1,8 +1,8 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <UserSecretsId>93a4c916-f95a-41eb-8038-a43091f750bc</UserSecretsId>
+    <UserSecretsId>e395c0e7-a1b7-49c5-92c3-1de6489bbcba</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <DockerfileContext>..\..\..</DockerfileContext>
   </PropertyGroup>
@@ -16,13 +16,9 @@
 	  <PackageReference Include="Microsoft.EntityFrameworkCore.Abstractions" Version="3.1.3" />
 	  <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="3.1.3" />
 	  <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.3" />
-	  <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.3" />
+	  <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.3" />
 	  <PackageReference Include="Swashbuckle.AspNetCore" Version="5.3.3" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Configuration\" />
-    <Folder Include="Extensions\" />
-  </ItemGroup>
 
 </Project>

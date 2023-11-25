@@ -20,7 +20,7 @@ namespace NSE.Identidade.API.Controllers
         [HttpPost("nova-conta")]
         public async Task<ActionResult> Registrar(UsuarioRegistro usuarioRegistro)
         {
-            if(!ModelState.IsValid) return BadRequest();
+            if (!ModelState.IsValid) return BadRequest();
 
             var user = new IdentityUser
             {
@@ -30,7 +30,7 @@ namespace NSE.Identidade.API.Controllers
             };
 
             var result = await _userManager.CreateAsync(user, usuarioRegistro.Senha);
-            if(result.Succeeded)
+            if (result.Succeeded)
             {
                 await _signInManager.SignInAsync(user, isPersistent: false);
                 return Ok();
@@ -46,7 +46,7 @@ namespace NSE.Identidade.API.Controllers
 
             var result = await _signInManager.PasswordSignInAsync(usuarioLogin.Email, usuarioLogin.Senha, false, true);
 
-            if(result.Succeeded)
+            if (result.Succeeded)
                 return Ok();
 
             return BadRequest();
