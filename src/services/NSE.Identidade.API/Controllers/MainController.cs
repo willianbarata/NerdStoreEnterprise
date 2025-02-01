@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.EntityFrameworkCore.Internal;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,7 +8,7 @@ using System.Linq;
 namespace NSE.Identidade.API.Controllers
 {
     [ApiController]
-    public class MainController : Controller
+    public abstract class MainController : Controller
     {
         protected ICollection<string> Erros = new List<string>();
 
@@ -22,9 +23,28 @@ namespace NSE.Identidade.API.Controllers
             }));
         }
 
+        protected ActionResult CustomResponse(ModelStateDictionary modelState)
+        {
+            var erros = modelState.Values.SelectMany(e => e.Errors);
+            foreach (var erro in erros)
+            {
+                AdicionarErroProcessamento(erro.ErrorMessage);
+            }
+            return CustomResponse();
+        }
+
         protected bool OperacaoValida()
         {
             return !Erros.Any();
+        }
+
+        protected void AdicionarErroProcessamento(string erro)
+        {
+            Erros.Add(erro);
+        }
+        protected void LimparErrosProcessamento()
+        {
+            Erros.Clear();
         }
     }
 }
