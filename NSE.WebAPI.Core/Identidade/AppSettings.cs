@@ -1,6 +1,8 @@
-﻿using System.Security.Policy;
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
 
-namespace NSE.Identidade.API.Extensions
+namespace NSE.WebAPI.Core.Identidade
 {
     public class AppSettings
     {
